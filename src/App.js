@@ -2,7 +2,7 @@ import React from 'react';
 import './App.css';
 import {BrowserRouter, Switch, Route} from "react-router-dom";
 import SignUpPage from "./pages/authentication/SignUpPage";
-import SignUpAcknoledgmentPage from "./pages/authentication/SignUpAcknowledgmentPage";
+import SignUpAcknowledgmentPage from "./pages/authentication/SignUpAcknowledgmentPage";
 
 function App() {
     return (
@@ -13,7 +13,7 @@ function App() {
                 </Route>
 
                 <Route path="/signup/success">
-                    <SignUpAcknoledgmentPage/>
+                    <SignUpAcknowledgmentPage/>
                 </Route>
             </Switch>
         </BrowserRouter>

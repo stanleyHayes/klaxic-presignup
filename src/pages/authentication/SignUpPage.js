@@ -316,6 +316,7 @@ function SignUpPage({loading}) {
                                     placeholder="Enter password"
                                     name="password"
                                     label="Password"
+                                    type="password"
                                     onChange={handleChange}
                                     helperText={error.password}
                                     error={Boolean(error.password)}
@@ -328,6 +329,7 @@ function SignUpPage({loading}) {
                                     fullWidth={true}
                                     required={true}
                                     margin="dense"
+                                    type="password"
                                     onChange={handleConfirmPasswordChange}
                                     value={confirmPassword}
                                     placeholder="Confirm password"
@@ -353,6 +355,7 @@ function SignUpPage({loading}) {
 }
 
 const mapStateToProps = state => {
+    console.log(state)
     return {
         loading: state.auth.loading
     }

@@ -1,11 +1,20 @@
 import React from "react";
+import {makeStyles} from "@material-ui/styles";
+import "../../App.css";
 
-function SignUpAcknoledgmentPage() {
+function SignUpAcknowledgmentPage() {
+
+    const useStyles = makeStyles({
+
+    })
+
+    const classes = useStyles();
+
     return (
-        <div>
+        <div className="container">
 
         </div>
     )
 }
 
-export default SignUpAcknoledgmentPage;
+export default SignUpAcknowledgmentPage;

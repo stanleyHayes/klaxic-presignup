@@ -30,7 +30,8 @@ export const signUp = (user, history) => {
     return function (dispatch) {
         dispatch(signUpRequest());
         axios({
-            method: 'http://localhost:5000/api/v1/auth/register',
+            method: 'post',
+            url: 'http://localhost:5000/api/v1/auth/register',
             data: user
         }).then(response => {
             dispatch(signUpSuccess(response.data.data));
