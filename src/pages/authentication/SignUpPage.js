@@ -44,7 +44,14 @@ function SignUpPage() {
                 <Grid container={true} justify="center" spacing={5} className={classes.gridContainer}>
                     <Grid item={true} xs={10} md={4} className={classes.gridItem}>
                         <div className="description-container">
+
                             <Typography variant="h2" className={classes.mainText}>Lorem Ipsum</Typography>
+
+                            <Typography variant="h6" className={classes.secondaryText}>
+                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                                labore et dolore magna aliqua
+                            </Typography>
+
                             <Typography variant="h6" className={classes.secondaryText}>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                                 labore et dolore magna aliqua
