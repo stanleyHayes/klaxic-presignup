@@ -42,7 +42,7 @@ function SignUpPage() {
         <div className="container">
             <Container className={classes.container}>
                 <Grid container={true} justify="center" spacing={5} className={classes.gridContainer}>
-                    <Grid item={true} xs={10} md={4} className={classes.gridItem}>
+                    <Grid item={true} xs={12} md={4} className={classes.gridItem}>
                         <div className="description-container">
 
                             <Typography variant="h2" className={classes.mainText}>Lorem Ipsum</Typography>
@@ -59,10 +59,10 @@ function SignUpPage() {
                         </div>
                     </Grid>
 
-                    <Grid item={true} xs={10} md={4}>
+                    <Grid item={true} xs={12} md={4}>
                         <Card elevation={1} raised={true} variant="elevation">
                             <CardContent>
-                                <Typography variant="caption">First Name</Typography>
+                                <Typography variant="subtitle2">First Name</Typography>
                                 <TextField
                                     size="small"
                                     variant="outlined"
@@ -74,7 +74,7 @@ function SignUpPage() {
                                     label="First Name"
                                 />
 
-                                <Typography variant="caption">Email</Typography>
+                                <Typography variant="subtitle2">Email</Typography>
                                 <TextField
                                     size="small"
                                     variant="outlined"
@@ -86,7 +86,7 @@ function SignUpPage() {
                                     label="Email"
                                 />
 
-                                <Typography variant="caption">Profession</Typography>
+                                <Typography variant="subtitle2">Profession</Typography>
                                 <TextField
                                     size="small"
                                     variant="outlined"
@@ -98,7 +98,7 @@ function SignUpPage() {
                                     label="Profession"
                                 />
 
-                                <Typography variant="caption">Community Name</Typography>
+                                <Typography variant="subtitle2">Community Name</Typography>
                                 <TextField
                                     size="small"
                                     variant="outlined"
@@ -110,7 +110,7 @@ function SignUpPage() {
                                     label="Community Name"
                                 />
 
-                                <Typography variant="caption">Mobile Number</Typography>
+                                <Typography variant="subtitle2">Mobile Number</Typography>
                                 <TextField
                                     size="small"
                                     variant="outlined"
@@ -122,7 +122,7 @@ function SignUpPage() {
                                     label="Mobile Number"
                                 />
 
-                                <Typography variant="caption">Username</Typography>
+                                <Typography variant="subtitle2">Username</Typography>
                                 <TextField
                                     size="small"
                                     variant="outlined"
@@ -134,7 +134,7 @@ function SignUpPage() {
                                     label="Username"
                                 />
 
-                                <Typography variant="caption">District</Typography>
+                                <Typography variant="subtitle2">District</Typography>
                                 <TextField
                                     size="small"
                                     variant="outlined"
@@ -146,7 +146,7 @@ function SignUpPage() {
                                     label="District"
                                 />
 
-                                <Typography variant="caption">Password</Typography>
+                                <Typography variant="subtitle2">Password</Typography>
                                 <TextField
                                     size="small"
                                     variant="outlined"
@@ -158,7 +158,7 @@ function SignUpPage() {
                                     label="Password"
                                 />
 
-                                <Typography variant="caption">Confirm Password</Typography>
+                                <Typography variant="subtitle2">Confirm Password</Typography>
                                 <TextField
                                     size="small"
                                     variant="outlined"
