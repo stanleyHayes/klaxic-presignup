@@ -1,9 +1,15 @@
 import React, {useState} from "react";
-import {Grid, Card, CardContent, Typography, TextField, Button, Container} from "@material-ui/core";
+import {Grid, Card, CardContent, Typography, TextField, Button, Container, LinearProgress} from "@material-ui/core";
 import "../../App.css";
 import {makeStyles} from "@material-ui/styles";
+import {connect, useDispatch} from "react-redux";
+import {useHistory} from "react-router-dom";
+import {signUp} from "../redux/authentication/auth-action-creators";
 
-function SignUpPage() {
+function SignUpPage({loading}) {
+
+    const dispatch = useDispatch();
+    const history = useHistory();
 
     const useStyles = makeStyles({
         gridItem: {
@@ -134,7 +140,7 @@ function SignUpPage() {
             setError({...error, password: "", confirm_password: ""});
         }
 
-        console.log(user);
+        dispatch(signUp(user, history));
     }
 
     const handleChange = (event) => {
@@ -166,6 +172,7 @@ function SignUpPage() {
 
                     <Grid item={true} xs={12} md={4}>
                         <Card elevation={1} raised={true} variant="elevation">
+                            {loading && <LinearProgress variant="query" />}
                             <CardContent>
                                 <Typography variant="subtitle2">First Name</Typography>
                                 <TextField
@@ -345,4 +352,10 @@ function SignUpPage() {
     )
 }
 
-export default SignUpPage;
+const mapStateToProps = state => {
+    return {
+        loading: state.auth.loading
+    }
+}
+
+export default connect(mapStateToProps) (SignUpPage);

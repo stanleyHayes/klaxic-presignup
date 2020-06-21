@@ -26,7 +26,7 @@ export const signUpFailure = (error) => {
     }
 }
 
-export const signUp = (user) => {
+export const signUp = (user, history) => {
     return function (dispatch) {
         dispatch(signUpRequest());
         axios({
@@ -34,6 +34,7 @@ export const signUp = (user) => {
             data: user
         }).then(response => {
             dispatch(signUpSuccess(response.data.data));
+            history.push('/signup/success')
         }).catch(error => {
             dispatch(signUpFailure( error.response.data.error));
         });
