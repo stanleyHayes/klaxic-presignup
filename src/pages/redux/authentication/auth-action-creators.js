@@ -32,10 +32,13 @@ export const signUp = (user, history) => {
         axios({
             method: 'post',
             url: 'http://localhost:5000/api/v1/auth/register',
+            headers: {
+                'Access-Control-Allow-Origin': 'http://localhost:3000'
+            },
             data: user
         }).then(response => {
+            history.push('/signup/success');
             dispatch(signUpSuccess(response.data.data));
-            history.push('/signup/success')
         }).catch(error => {
             dispatch(signUpFailure( error.response.data.error));
         });
