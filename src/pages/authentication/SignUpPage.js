@@ -13,7 +13,7 @@ function SignUpPage() {
         },
         gridContainer: {
             minHeight: "100%",
-            padding: 32
+            padding: 16
         },
         container: {
             minHeight: "100%"
