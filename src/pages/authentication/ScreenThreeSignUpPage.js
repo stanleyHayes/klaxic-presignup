@@ -204,7 +204,6 @@ function ScreenThreeSignUpPage({loading, storedUser}) {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         loading: state.auth.loading,
         storedUser: state.user.user

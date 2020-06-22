@@ -235,7 +235,6 @@ function ScreenOneSignUpPage({storedUser}) {
 }
 
 const mapStateToProps = state => {
-    console.log(state)
     return {
         storedUser: state.user.user
     }
