@@ -1,10 +1,9 @@
 import React, {useState} from "react";
-import {Grid, Card, CardContent, Typography, TextField, Button, Container, LinearProgress} from "@material-ui/core";
+import {Grid, Card, CardContent, Typography, TextField, Button, Container} from "@material-ui/core";
 import "../../App.css";
 import {makeStyles} from "@material-ui/styles";
 import {connect, useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
-import {signUp} from "../redux/authentication/auth-action-creators";
 import {updateUser} from "../redux/users/users-action-creators";
 
 function ScreenTwoSignUpPage({storedUser}) {
