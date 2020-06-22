@@ -42,7 +42,7 @@ function ScreenOneSignUpPage({storedUser}) {
     });
     const classes = useStyles();
 
-    const [user, setUser] = useState({...storedUser});
+    const [user, setUser] = useState({...storedUser, "work_status": "EMPLOYED", "gender": "MALE"});
     const [error, setError] = useState({});
 
     const {

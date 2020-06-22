@@ -181,7 +181,7 @@ function ScreenTwoSignUpPage({storedUser}) {
                                     required={true}
                                     margin="dense"
                                     placeholder="Enter Country"
-                                    name="country"
+                                    name="nationality"
                                     value={country}
                                     label="Country"
                                     onChange={handleChange}
