@@ -45,7 +45,7 @@ function ScreenTwoSignUpPage({storedUser}) {
     const [error, setError] = useState({});
 
     const {
-        country,
+        nationality,
         hometown_or_community_name,
         district_assembly,
         state_or_region
@@ -77,11 +77,11 @@ function ScreenTwoSignUpPage({storedUser}) {
             setError({...error, state_or_region: ""});
         }
 
-        if (!country) {
-            setError({...error, country: "Country required"});
+        if (!nationality) {
+            setError({...error, nationality: "Country required"});
             return;
         } else {
-            setError({...error, country: ""});
+            setError({...error, nationality: ""});
         }
 
         dispatch(updateUser(user, history, '/account'));
@@ -139,7 +139,7 @@ function ScreenTwoSignUpPage({storedUser}) {
                                     error={Boolean(error.hometown_or_community_name)}
                                 />
 
-                                <Typography variant="subtitle2">District</Typography>
+                                <Typography variant="subtitle2">Municipal/District/LGA</Typography>
                                 <TextField
                                     size="small"
                                     variant="outlined"
@@ -149,13 +149,13 @@ function ScreenTwoSignUpPage({storedUser}) {
                                     value={district_assembly}
                                     placeholder="Enter your district name"
                                     name="district_assembly"
-                                    label="District"
+                                    label="Municipal/District/LGA"
                                     onChange={handleChange}
                                     helperText={error.district_assembly}
                                     error={Boolean(error.district_assembly)}
                                 />
 
-                                <Typography variant="subtitle2">State</Typography>
+                                <Typography variant="subtitle2">State/Region/Province</Typography>
                                 <TextField
                                     size="small"
                                     variant="outlined"
@@ -181,7 +181,7 @@ function ScreenTwoSignUpPage({storedUser}) {
                                     margin="dense"
                                     placeholder="Enter Country"
                                     name="nationality"
-                                    value={country}
+                                    value={nationality}
                                     label="Country"
                                     onChange={handleChange}
                                     helperText={error.country}

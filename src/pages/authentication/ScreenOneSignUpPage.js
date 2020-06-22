@@ -135,6 +135,21 @@ function ScreenOneSignUpPage({storedUser}) {
                                     error={Boolean(error.first_name)}
                                 />
 
+                                <div className="margin-bottom-small">
+                                    <Typography variant="subtitle2" gutterBottom={true}>Gender</Typography>
+                                    <Select
+                                        margin="dense"
+                                        fullWidth={true}
+                                        variant="outlined"
+                                        name="gender"
+                                        value={gender}
+                                        onChange={handleChange}>
+                                        <MenuItem value="MALE">Male</MenuItem>
+                                        <MenuItem value="FEMALE">Female</MenuItem>
+                                    </Select>
+                                </div>
+                                {/*{Gender}*/}
+
                                 <Typography variant="subtitle2">Profession</Typography>
                                 <TextField
                                     size="small"
@@ -167,22 +182,6 @@ function ScreenOneSignUpPage({storedUser}) {
                                         <MenuItem value="SEARCHING">Searching for job</MenuItem>
                                     </Select>
                                 </div>
-
-
-                                <div className="margin-bottom-small">
-                                    <Typography variant="subtitle2" gutterBottom={true}>Gender</Typography>
-                                    <Select
-                                        margin="dense"
-                                        fullWidth={true}
-                                        variant="outlined"
-                                        name="gender"
-                                        value={gender}
-                                        onChange={handleChange}>
-                                        <MenuItem value="MALE">Male</MenuItem>
-                                        <MenuItem value="FEMALE">Female</MenuItem>
-                                    </Select>
-                                </div>
-                                {/*{Gender}*/}
 
                                 <Typography variant="subtitle2">Mobile Number</Typography>
                                 <TextField
