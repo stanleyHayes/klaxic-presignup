@@ -31,3 +31,11 @@ body{
 .margin-top-small{
   margin-bottom: 8px;
 }
+
+.grey-text{
+  color: #888888;
+}
+
+.white-text{
+  color: white;
+}

@@ -22,7 +22,7 @@ function App() {
                     <ScreenThreeSignUpPage/>
                 </Route>
 
-                <Route path="/signup/success">
+                <Route exact={true} path="/signup/success">
                     <SignUpAcknowledgmentPage/>
                 </Route>
             </Switch>
