@@ -47,7 +47,6 @@ function ScreenOneSignUpPage({storedUser}) {
 
     const {
         first_name,
-        email,
         mobile_number,
         profession,
         work_status,
@@ -63,13 +62,6 @@ function ScreenOneSignUpPage({storedUser}) {
             return;
         } else {
             setError({...error, first_name: null});
-        }
-
-        if (!email) {
-            setError({...error, email: "Email required"});
-            return;
-        } else {
-            setError({...error, email: null});
         }
 
         if (!mobile_number) {
@@ -150,7 +142,7 @@ function ScreenOneSignUpPage({storedUser}) {
                                 </div>
                                 {/*{Gender}*/}
 
-                                <Typography variant="subtitle2">Profession</Typography>
+                                <Typography variant="subtitle2">Profession/Occupation</Typography>
                                 <TextField
                                     size="small"
                                     variant="outlined"
@@ -158,9 +150,9 @@ function ScreenOneSignUpPage({storedUser}) {
                                     required={true}
                                     margin="dense"
                                     value={profession}
-                                    placeholder="Enter profession"
+                                    placeholder="Enter profession or Occupation"
                                     name="profession"
-                                    label="Profession"
+                                    label="Profession/Occupation"
                                     onChange={handleChange}
                                     helperText={error.profession}
                                     error={Boolean(error.profession)}
@@ -197,22 +189,6 @@ function ScreenOneSignUpPage({storedUser}) {
                                     onChange={handleChange}
                                     helperText={error.mobile_number}
                                     error={Boolean(error.mobile_number)}
-                                />
-
-                                <Typography variant="subtitle2">Email</Typography>
-                                <TextField
-                                    size="small"
-                                    variant="outlined"
-                                    fullWidth={true}
-                                    required={true}
-                                    margin="dense"
-                                    value={email}
-                                    placeholder="Enter email"
-                                    name="email"
-                                    label="Email"
-                                    onChange={handleChange}
-                                    helperText={error.email}
-                                    error={Boolean(error.email)}
                                 />
 
 

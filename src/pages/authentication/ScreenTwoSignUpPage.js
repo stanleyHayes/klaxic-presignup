@@ -48,13 +48,21 @@ function ScreenTwoSignUpPage({storedUser}) {
         nationality,
         hometown_or_community_name,
         district_assembly,
-        state_or_region
+        state_or_region,
+        email
     } = user;
 
 
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        if (!email) {
+            setError({...error, email: "Email required"});
+            return;
+        } else {
+            setError({...error, email: null});
+        }
 
         if (!hometown_or_community_name) {
             setError({...error, hometown_or_community_name: "First name required"});
@@ -122,6 +130,22 @@ function ScreenTwoSignUpPage({storedUser}) {
                     <Grid item={true} xs={12} md={4}>
                         <Card elevation={1} raised={true} variant="elevation">
                             <CardContent>
+
+                                <Typography variant="subtitle2">Email</Typography>
+                                <TextField
+                                    size="small"
+                                    variant="outlined"
+                                    fullWidth={true}
+                                    required={true}
+                                    margin="dense"
+                                    value={email}
+                                    placeholder="Enter email"
+                                    name="email"
+                                    label="Email"
+                                    onChange={handleChange}
+                                    helperText={error.email}
+                                    error={Boolean(error.email)}
+                                />
 
                                 <Typography variant="subtitle2">Community Name</Typography>
                                 <TextField
