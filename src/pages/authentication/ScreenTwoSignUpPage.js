@@ -133,6 +133,22 @@ function ScreenTwoSignUpPage({storedUser}) {
                         <Card elevation={1} raised={true} variant="elevation">
                             <CardContent>
 
+                                <Typography variant="subtitle2">Zipcode/Ghana Post Address</Typography>
+                                <TextField
+                                    size="small"
+                                    variant="outlined"
+                                    fullWidth={true}
+                                    required={true}
+                                    margin="dense"
+                                    value={zipcode}
+                                    placeholder="Enter zipcode or GH Post Address"
+                                    name="zipcode"
+                                    label="Zipcode/Ghana Post Address"
+                                    onChange={handleChange}
+                                    helperText={error.zipcode}
+                                    error={Boolean(error.zipcode)}
+                                />
+
                                 <Typography variant="subtitle2">Community Name</Typography>
                                 <TextField
                                     size="small"
@@ -163,22 +179,6 @@ function ScreenTwoSignUpPage({storedUser}) {
                                     onChange={handleChange}
                                     helperText={error.district_assembly}
                                     error={Boolean(error.district_assembly)}
-                                />
-
-                                <Typography variant="subtitle2">Zipcode</Typography>
-                                <TextField
-                                    size="small"
-                                    variant="outlined"
-                                    fullWidth={true}
-                                    required={true}
-                                    margin="dense"
-                                    value={zipcode}
-                                    placeholder="Enter your zipcode"
-                                    name="zipcode"
-                                    label="Zipcode"
-                                    onChange={handleChange}
-                                    helperText={error.zipcode}
-                                    error={Boolean(error.zipcode)}
                                 />
 
                                 <Typography variant="subtitle2">State/Region/Province</Typography>
