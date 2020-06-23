@@ -7,6 +7,7 @@ import {useHistory} from "react-router-dom";
 import {signUp} from "../redux/authentication/auth-action-creators";
 import PhoneInput from "react-phone-number-input";
 import flags from "react-phone-number-input/flags";
+import 'react-phone-number-input/style.css'
 import validator from "validator";
 
 

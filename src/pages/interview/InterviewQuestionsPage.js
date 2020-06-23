@@ -29,7 +29,7 @@ function InterviewQuestionsPage({question, questions}) {
     const handleClick = event => {
         event.preventDefault();
 
-        if(parseInt(question_number, 10) === questions.length){
+        if (parseInt(question_number, 10) === questions.length) {
             history.push(`/interview/success`);
             return;
         }
@@ -45,7 +45,7 @@ function InterviewQuestionsPage({question, questions}) {
         <div className="container justify-content-center">
             <Container>
                 <Typography gutterBottom={true} className="white-text" variant="h1" align="center">
-                    {question_number < 10 ? `0${question_number}`: question_number} / {questions.length}
+                    {question_number < 10 ? `0${question_number}` : question_number} / {questions.length}
                 </Typography>
 
                 <Typography className="white-text" gutterBottom={true} variant="h2" align="center">
@@ -56,13 +56,17 @@ function InterviewQuestionsPage({question, questions}) {
                     {question.description}
                 </Typography>
 
+                <Typography className="grey-text" gutterBottom={true} variant="subtitle1" align="center">
+                    Response
+                </Typography>
+
                 <div className={classes.buttonContainer}>
                     <Button
                         onClick={handleClick}
                         className={classes.button}
                         size="large"
                         variant="contained">
-                        {parseInt(question_number, 10) === questions.length  ? "Finish": "Next"}
+                        {parseInt(question_number, 10) === questions.length ? "Finish" : "Next"}
                     </Button>
                 </div>
 

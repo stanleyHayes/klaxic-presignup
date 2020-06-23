@@ -5,8 +5,6 @@ import {makeStyles} from "@material-ui/styles";
 import {connect, useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {updateUser} from "../redux/users/users-action-creators";
-import validator from "validator";
-
 
 function ScreenOneSignUpPage({storedUser}) {
 
