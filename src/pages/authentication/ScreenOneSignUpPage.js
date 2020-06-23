@@ -140,7 +140,7 @@ function ScreenOneSignUpPage({storedUser}) {
                                     fullWidth={true}
                                     required={true}
                                     margin="dense"
-                                    value={first_name}
+                                    value={last_name}
                                     placeholder="Enter surname"
                                     name="last_name"
                                     label="Surname"
