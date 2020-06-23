@@ -59,13 +59,6 @@ function ScreenTwoSignUpPage({storedUser}) {
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (!zipcode) {
-            setError({...error, zipcode: "Zipcode required"});
-            return;
-        } else {
-            setError({...error, zipcode: ""});
-        }
-
         if (!hometown_or_community_name) {
             setError({...error, hometown_or_community_name: "First name required"});
             return;
@@ -93,6 +86,14 @@ function ScreenTwoSignUpPage({storedUser}) {
         } else {
             setError({...error, nationality: ""});
         }
+
+        if (!zipcode) {
+            setError({...error, zipcode: "Zipcode required"});
+            return;
+        } else {
+            setError({...error, zipcode: ""});
+        }
+
 
         dispatch(updateUser(user, history, '/account'));
     }
@@ -132,22 +133,6 @@ function ScreenTwoSignUpPage({storedUser}) {
                     <Grid item={true} xs={12} md={4}>
                         <Card elevation={1} raised={true} variant="elevation">
                             <CardContent>
-
-                                <Typography variant="subtitle2">Zipcode/Ghana Post Address</Typography>
-                                <TextField
-                                    size="small"
-                                    variant="outlined"
-                                    fullWidth={true}
-                                    required={true}
-                                    margin="dense"
-                                    value={zipcode}
-                                    placeholder="Enter zipcode or GH Post Address"
-                                    name="zipcode"
-                                    label="Zipcode/Ghana Post Address"
-                                    onChange={handleChange}
-                                    helperText={error.zipcode}
-                                    error={Boolean(error.zipcode)}
-                                />
 
                                 <Typography variant="subtitle2">Community Name</Typography>
                                 <TextField
@@ -217,6 +202,22 @@ function ScreenTwoSignUpPage({storedUser}) {
                                         }))
                                     }
                                 </Select>
+
+                                <Typography variant="subtitle2">Digital Address / Zipcode</Typography>
+                                <TextField
+                                    size="small"
+                                    variant="outlined"
+                                    fullWidth={true}
+                                    margin="dense"
+                                    value={zipcode}
+                                    placeholder="Enter zipcode or GH Post Address"
+                                    name="zipcode"
+                                    label="Digital Address / Zipcode"
+                                    onChange={handleChange}
+                                    helperText={error.zipcode}
+                                    error={Boolean(error.zipcode)}
+                                />
+
 
                                 <Grid container={true} spacing={3}>
                                     <Grid item={true} xs={6}>

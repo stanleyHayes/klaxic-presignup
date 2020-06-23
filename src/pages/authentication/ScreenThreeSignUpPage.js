@@ -83,16 +83,6 @@ function ScreenThreeSignUpPage({loading, storedUser}) {
             setError({...error, email: null});
         }
 
-        if (!mobile_number) {
-            setError({...error, mobile_number: "Mobile number required"});
-            return;
-        } else if (!validator.isMobilePhone(mobile_number)) {
-            setError({...error, mobile_number: "Invalid Phone number"});
-            return;
-        } else {
-            setError({...error, mobile_number: ""});
-        }
-
         if (!username) {
             setError({...error, username: "Username required"});
             return;
@@ -156,6 +146,17 @@ function ScreenThreeSignUpPage({loading, storedUser}) {
                             {loading && <LinearProgress variant="query" />}
                             <CardContent>
 
+                                <Typography variant="subtitle2">Mobile Number</Typography>
+                                <PhoneInput
+                                    defaultCountry="GH"
+                                    onChange={handlePhoneChange}
+                                    name="mobile_number"
+                                    flags={flags}
+                                    value={mobile_number}
+                                    displayInitialValueAsLocalNumber={true}
+                                    placeholder="Enter Phone Number"
+                                />
+
                                 <Typography variant="subtitle2">Email</Typography>
                                 <TextField
                                     size="small"
@@ -170,17 +171,6 @@ function ScreenThreeSignUpPage({loading, storedUser}) {
                                     onChange={handleChange}
                                     helperText={error.email}
                                     error={Boolean(error.email)}
-                                />
-
-                                <Typography variant="subtitle2">Mobile Number</Typography>
-                                <PhoneInput
-                                    defaultCountry="GH"
-                                    onChange={handlePhoneChange}
-                                    name="mobile_number"
-                                    flags={flags}
-                                    value={mobile_number}
-                                    displayInitialValueAsLocalNumber={true}
-                                    placeholder="Enter Phone Number"
                                 />
 
                                 <Typography variant="subtitle2">Username</Typography>
