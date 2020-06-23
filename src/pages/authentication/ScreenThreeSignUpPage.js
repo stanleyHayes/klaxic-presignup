@@ -5,6 +5,10 @@ import {makeStyles} from "@material-ui/styles";
 import {connect, useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {signUp} from "../redux/authentication/auth-action-creators";
+import PhoneInput from "react-phone-number-input";
+import flags from "react-phone-number-input/flags";
+import validator from "validator";
+
 
 function ScreenThreeSignUpPage({loading, storedUser}) {
 
@@ -46,9 +50,15 @@ function ScreenThreeSignUpPage({loading, storedUser}) {
     const [error, setError] = useState({});
 
     const {
+        email,
         username,
-        password
+        password,
+        mobile_number
     } = user;
+
+    const handlePhoneChange = (value) => {
+        setUser({...user, mobile_number: value});
+    }
 
     const handleConfirmPasswordChange = (event) => {
         setConfirmPassword(event.target.value);
@@ -61,6 +71,26 @@ function ScreenThreeSignUpPage({loading, storedUser}) {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        if (!email) {
+            setError({...error, email: "Email required"});
+            return;
+        } else if (!validator.isEmail(email)) {
+            setError({...error, email: "Invalid email"});
+            return;
+        } else {
+            setError({...error, email: null});
+        }
+
+        if (!mobile_number) {
+            setError({...error, mobile_number: "Mobile number required"});
+            return;
+        } else if (!validator.isMobilePhone(mobile_number)) {
+            setError({...error, mobile_number: "Invalid Phone number"});
+            return;
+        } else {
+            setError({...error, mobile_number: ""});
+        }
 
         if (!username) {
             setError({...error, username: "Username required"});
@@ -124,6 +154,34 @@ function ScreenThreeSignUpPage({loading, storedUser}) {
                         <Card elevation={1} raised={true} variant="elevation">
                             {loading && <LinearProgress variant="query" />}
                             <CardContent>
+
+                                <Typography variant="subtitle2">Email</Typography>
+                                <TextField
+                                    size="small"
+                                    variant="outlined"
+                                    fullWidth={true}
+                                    required={true}
+                                    margin="dense"
+                                    value={email}
+                                    placeholder="Enter email"
+                                    name="email"
+                                    label="Email"
+                                    onChange={handleChange}
+                                    helperText={error.email}
+                                    error={Boolean(error.email)}
+                                />
+
+                                <Typography variant="subtitle2">Mobile Number</Typography>
+                                <PhoneInput
+                                    defaultCountry="GH"
+                                    onChange={handlePhoneChange}
+                                    name="mobile_number"
+                                    flags={flags}
+                                    value={mobile_number}
+                                    displayInitialValueAsLocalNumber={true}
+                                    placeholder="Enter Phone Number"
+                                />
+
                                 <Typography variant="subtitle2">Username</Typography>
                                 <TextField
                                     size="small"

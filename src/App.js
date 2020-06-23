@@ -5,6 +5,9 @@ import SignUpAcknowledgmentPage from "./pages/authentication/SignUpAcknowledgmen
 import ScreenOneSignUpPage from "./pages/authentication/ScreenOneSignUpPage";
 import ScreenTwoSignUpPage from "./pages/authentication/ScreenTwoSignUpPage";
 import ScreenThreeSignUpPage from "./pages/authentication/ScreenThreeSignUpPage";
+import InterviewPage from "./pages/interview/InterviewPage";
+import InterviewQuestionsPage from "./pages/interview/InterviewQuestionsPage";
+import InterviewAcknowledgmentPage from "./pages/interview/InterviewAcknowledgmentPage";
 
 function App() {
     return (
@@ -24,6 +27,18 @@ function App() {
 
                 <Route exact={true} path="/signup/success">
                     <SignUpAcknowledgmentPage/>
+                </Route>
+
+                <Route exact={true} path="/interview">
+                    <InterviewPage/>
+                </Route>
+
+                <Route exact={true} path="/interview/questions/:question_number">
+                    <InterviewQuestionsPage/>
+                </Route>
+
+                <Route exact={true} path="/interview/success">
+                    <InterviewAcknowledgmentPage/>
                 </Route>
             </Switch>
         </BrowserRouter>

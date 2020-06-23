@@ -5,7 +5,6 @@ import {makeStyles} from "@material-ui/styles";
 import {connect, useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {updateUser} from "../redux/users/users-action-creators";
-import validator from "validator";
 import countryList from "react-select-country-list";
 
 
@@ -53,23 +52,19 @@ function ScreenTwoSignUpPage({storedUser}) {
         hometown_or_community_name,
         district_assembly,
         state_or_region,
-        email
+        zipcode
     } = user;
 
 
     const handleSubmit = (event) => {
         event.preventDefault();
 
-        if (!email) {
-            setError({...error, email: "Email required"});
-            return;
-        } else if (!validator.isEmail(email)) {
-            setError({...error, email: "Invalid email"});
+        if (!zipcode) {
+            setError({...error, zipcode: "Zipcode required"});
             return;
         } else {
-            setError({...error, email: null});
+            setError({...error, zipcode: ""});
         }
-
 
         if (!hometown_or_community_name) {
             setError({...error, hometown_or_community_name: "First name required"});
@@ -138,22 +133,6 @@ function ScreenTwoSignUpPage({storedUser}) {
                         <Card elevation={1} raised={true} variant="elevation">
                             <CardContent>
 
-                                <Typography variant="subtitle2">Email</Typography>
-                                <TextField
-                                    size="small"
-                                    variant="outlined"
-                                    fullWidth={true}
-                                    required={true}
-                                    margin="dense"
-                                    value={email}
-                                    placeholder="Enter email"
-                                    name="email"
-                                    label="Email"
-                                    onChange={handleChange}
-                                    helperText={error.email}
-                                    error={Boolean(error.email)}
-                                />
-
                                 <Typography variant="subtitle2">Community Name</Typography>
                                 <TextField
                                     size="small"
@@ -184,6 +163,22 @@ function ScreenTwoSignUpPage({storedUser}) {
                                     onChange={handleChange}
                                     helperText={error.district_assembly}
                                     error={Boolean(error.district_assembly)}
+                                />
+
+                                <Typography variant="subtitle2">Zipcode</Typography>
+                                <TextField
+                                    size="small"
+                                    variant="outlined"
+                                    fullWidth={true}
+                                    required={true}
+                                    margin="dense"
+                                    value={zipcode}
+                                    placeholder="Enter your zipcode"
+                                    name="zipcode"
+                                    label="Zipcode"
+                                    onChange={handleChange}
+                                    helperText={error.zipcode}
+                                    error={Boolean(error.zipcode)}
                                 />
 
                                 <Typography variant="subtitle2">State/Region/Province</Typography>

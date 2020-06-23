@@ -6,9 +6,7 @@ import {connect, useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {updateUser} from "../redux/users/users-action-creators";
 import validator from "validator";
-import PhoneInput from "react-phone-number-input";
-import flags from 'react-phone-number-input/flags'
-import 'react-phone-number-input/style.css';
+
 
 function ScreenOneSignUpPage({storedUser}) {
 
@@ -57,17 +55,11 @@ function ScreenOneSignUpPage({storedUser}) {
 
     const {
         first_name,
-        mobile_number,
         profession,
         work_status,
-        gender
+        gender,
+        last_name
     } = user;
-
-
-    const handlePhoneChange = (value) => {
-        setUser({...user, mobile_number: value});
-        console.log(user)
-    }
 
     const handleSubmit = (event) => {
         event.preventDefault();
@@ -79,14 +71,11 @@ function ScreenOneSignUpPage({storedUser}) {
             setError({...error, first_name: null});
         }
 
-        if (!mobile_number) {
-            setError({...error, mobile_number: "Mobile number required"});
-            return;
-        } else if (!validator.isMobilePhone(mobile_number)) {
-            setError({...error, mobile_number: "Invalid Phone number"});
+        if (!last_name) {
+            setError({...error, last_name: "Last name required"});
             return;
         } else {
-            setError({...error, mobile_number: ""});
+            setError({...error, last_name: null});
         }
 
         if (!profession) {
@@ -145,6 +134,22 @@ function ScreenOneSignUpPage({storedUser}) {
                                     error={Boolean(error.first_name)}
                                 />
 
+                                <Typography variant="subtitle2">Surname</Typography>
+                                <TextField
+                                    onChange={handleChange}
+                                    size="small"
+                                    variant="outlined"
+                                    fullWidth={true}
+                                    required={true}
+                                    margin="dense"
+                                    value={first_name}
+                                    placeholder="Enter surname"
+                                    name="last_name"
+                                    label="Surname"
+                                    helperText={error.last_name}
+                                    error={Boolean(error.last_name)}
+                                />
+
                                 <div className="margin-bottom-small">
                                     <Typography variant="subtitle2" gutterBottom={true}>Gender</Typography>
                                     <Select
@@ -193,31 +198,6 @@ function ScreenOneSignUpPage({storedUser}) {
                                     </Select>
                                 </div>
 
-                                <Typography variant="subtitle2">Mobile Number</Typography>
-                                <PhoneInput
-                                    defaultCountry="GH"
-                                    onChange={handlePhoneChange}
-                                    name="mobile_number"
-                                    flags={flags}
-                                    value={mobile_number}
-                                    displayInitialValueAsLocalNumber={true}
-                                    placeholder="Enter Phone Number"
-                                />
-
-                                {/*<TextField*/}
-                                {/*    size="small"*/}
-                                {/*    variant="outlined"*/}
-                                {/*    fullWidth={true}*/}
-                                {/*    required={true}*/}
-                                {/*    margin="dense"*/}
-                                {/*    value={mobile_number}*/}
-                                {/*    placeholder="Enter phone number (+233270048319)"*/}
-                                {/*    name="mobile_number"*/}
-                                {/*    label="Mobile Number"*/}
-                                {/*    onChange={handleChange}*/}
-                                {/*    helperText={error.mobile_number}*/}
-                                {/*    error={Boolean(error.mobile_number)}*/}
-                                {/*/>*/}
 
 
                                 <Button
