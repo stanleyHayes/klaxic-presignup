@@ -39,3 +39,31 @@ body{
 .white-text{
   color: white;
 }
+
+
+.PhoneInputInput{
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border: 2px solid #dddddd;
+  border-radius: 4px;
+  padding-left: 8px;
+}
+
+.PhoneInputCountryIcon--border{
+  border: 1px solid #dddddd;
+  border-radius: 2px;
+}
+
+.PhoneInputCountrySelectArrow{
+  margin-right: 4px;
+  margin-left: 4px;
+}
+
+.PhoneInputCountrySelect{
+  background-color: white;
+  color: #333333;
+  font-family: "DejaVu Sans Condensed", serif;
+  border-radius: 8px;
+  overflow: hidden;
+  border: 1px solid #333333;
+}

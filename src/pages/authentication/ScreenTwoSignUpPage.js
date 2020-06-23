@@ -1,10 +1,13 @@
 import React, {useState} from "react";
-import {Grid, Card, CardContent, Typography, TextField, Button, Container} from "@material-ui/core";
+import {Grid, Card, CardContent, Typography, TextField, Button, Container, Select, MenuItem} from "@material-ui/core";
 import "../../App.css";
 import {makeStyles} from "@material-ui/styles";
 import {connect, useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {updateUser} from "../redux/users/users-action-creators";
+import validator from "validator";
+import countryList from "react-select-country-list";
+
 
 function ScreenTwoSignUpPage({storedUser}) {
 
@@ -41,7 +44,8 @@ function ScreenTwoSignUpPage({storedUser}) {
     });
     const classes = useStyles();
 
-    const [user, setUser] = useState({...storedUser});
+    const [countries] = useState(countryList().getData());
+    const [user, setUser] = useState({...storedUser, nationality: ""});
     const [error, setError] = useState({});
 
     const {
@@ -53,16 +57,19 @@ function ScreenTwoSignUpPage({storedUser}) {
     } = user;
 
 
-
     const handleSubmit = (event) => {
         event.preventDefault();
 
         if (!email) {
             setError({...error, email: "Email required"});
             return;
+        } else if (!validator.isEmail(email)) {
+            setError({...error, email: "Invalid email"});
+            return;
         } else {
             setError({...error, email: null});
         }
+
 
         if (!hometown_or_community_name) {
             setError({...error, hometown_or_community_name: "First name required"});
@@ -197,20 +204,24 @@ function ScreenTwoSignUpPage({storedUser}) {
 
 
                                 <Typography variant="subtitle2">Country</Typography>
-                                <TextField
-                                    size="small"
-                                    variant="outlined"
-                                    fullWidth={true}
-                                    required={true}
-                                    margin="dense"
-                                    placeholder="Enter Country"
+                                <Select
                                     name="nationality"
-                                    value={nationality}
-                                    label="Country"
-                                    onChange={handleChange}
-                                    helperText={error.country}
-                                    error={Boolean(error.country)}
-                                />
+                                    fullWidth={true}
+                                    variant="outlined"
+                                    margin="dense"
+                                    onChange={handleChange}>
+                                    {
+                                        (countries.map((country) => {
+                                            return (
+                                                <MenuItem
+                                                    key={country.label}
+                                                    value={country.value}>
+                                                    {country.label}
+                                                </MenuItem>
+                                            )
+                                        }))
+                                    }
+                                </Select>
 
                                 <Grid container={true} spacing={3}>
                                     <Grid item={true} xs={6}>
@@ -246,4 +257,4 @@ const mapStateToProps = state => {
 }
 
 
-export default connect(mapStateToProps) (ScreenTwoSignUpPage);
+export default connect(mapStateToProps)(ScreenTwoSignUpPage);

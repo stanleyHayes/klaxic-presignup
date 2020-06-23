@@ -5,6 +5,10 @@ import {makeStyles} from "@material-ui/styles";
 import {connect, useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {updateUser} from "../redux/users/users-action-creators";
+import validator from "validator";
+import PhoneInput from "react-phone-number-input";
+import flags from 'react-phone-number-input/flags'
+import 'react-phone-number-input/style.css';
 
 function ScreenOneSignUpPage({storedUser}) {
 
@@ -13,6 +17,7 @@ function ScreenOneSignUpPage({storedUser}) {
     const history = useHistory();
 
     const useStyles = makeStyles({
+
         gridItem: {
             flexGrow: 1,
             paddingTop: 24,
@@ -38,6 +43,11 @@ function ScreenOneSignUpPage({storedUser}) {
             color: "white",
             backgroundColor: "green",
             marginTop: 16
+        },
+        input: {
+            paddingTop: 8,
+            paddingBottom: 8,
+            borderRadius: 16
         }
     });
     const classes = useStyles();
@@ -54,6 +64,11 @@ function ScreenOneSignUpPage({storedUser}) {
     } = user;
 
 
+    const handlePhoneChange = (value) => {
+        setUser({...user, mobile_number: value});
+        console.log(user)
+    }
+
     const handleSubmit = (event) => {
         event.preventDefault();
 
@@ -66,6 +81,9 @@ function ScreenOneSignUpPage({storedUser}) {
 
         if (!mobile_number) {
             setError({...error, mobile_number: "Mobile number required"});
+            return;
+        } else if (!validator.isMobilePhone(mobile_number)) {
+            setError({...error, mobile_number: "Invalid Phone number"});
             return;
         } else {
             setError({...error, mobile_number: ""});
@@ -176,20 +194,30 @@ function ScreenOneSignUpPage({storedUser}) {
                                 </div>
 
                                 <Typography variant="subtitle2">Mobile Number</Typography>
-                                <TextField
-                                    size="small"
-                                    variant="outlined"
-                                    fullWidth={true}
-                                    required={true}
-                                    margin="dense"
-                                    value={mobile_number}
-                                    placeholder="Enter phone number (+233270048319)"
+                                <PhoneInput
+                                    defaultCountry="GH"
+                                    onChange={handlePhoneChange}
                                     name="mobile_number"
-                                    label="Mobile Number"
-                                    onChange={handleChange}
-                                    helperText={error.mobile_number}
-                                    error={Boolean(error.mobile_number)}
+                                    flags={flags}
+                                    value={mobile_number}
+                                    displayInitialValueAsLocalNumber={true}
+                                    placeholder="Enter Phone Number"
                                 />
+
+                                {/*<TextField*/}
+                                {/*    size="small"*/}
+                                {/*    variant="outlined"*/}
+                                {/*    fullWidth={true}*/}
+                                {/*    required={true}*/}
+                                {/*    margin="dense"*/}
+                                {/*    value={mobile_number}*/}
+                                {/*    placeholder="Enter phone number (+233270048319)"*/}
+                                {/*    name="mobile_number"*/}
+                                {/*    label="Mobile Number"*/}
+                                {/*    onChange={handleChange}*/}
+                                {/*    helperText={error.mobile_number}*/}
+                                {/*    error={Boolean(error.mobile_number)}*/}
+                                {/*/>*/}
 
 
                                 <Button
@@ -215,4 +243,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps) (ScreenOneSignUpPage);
+export default connect(mapStateToProps)(ScreenOneSignUpPage);
