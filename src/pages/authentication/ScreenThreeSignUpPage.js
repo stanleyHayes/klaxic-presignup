@@ -5,9 +5,6 @@ import {makeStyles} from "@material-ui/styles";
 import {connect, useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {signUp} from "../redux/authentication/auth-action-creators";
-import PhoneInput from "react-phone-number-input";
-import flags from "react-phone-number-input/flags";
-import 'react-phone-number-input/style.css'
 import validator from "validator";
 
 
@@ -53,13 +50,8 @@ function ScreenThreeSignUpPage({loading, storedUser}) {
     const {
         email,
         username,
-        password,
-        mobile_number
+        password
     } = user;
-
-    const handlePhoneChange = (value) => {
-        setUser({...user, mobile_number: value});
-    }
 
     const handleConfirmPasswordChange = (event) => {
         setConfirmPassword(event.target.value);
@@ -145,17 +137,6 @@ function ScreenThreeSignUpPage({loading, storedUser}) {
                         <Card elevation={1} raised={true} variant="elevation">
                             {loading && <LinearProgress variant="query" />}
                             <CardContent>
-
-                                <Typography variant="subtitle2">Mobile Number</Typography>
-                                <PhoneInput
-                                    defaultCountry="GH"
-                                    onChange={handlePhoneChange}
-                                    name="mobile_number"
-                                    flags={flags}
-                                    value={mobile_number}
-                                    displayInitialValueAsLocalNumber={true}
-                                    placeholder="Enter Phone Number"
-                                />
 
                                 <Typography variant="subtitle2">Email</Typography>
                                 <TextField

@@ -6,7 +6,9 @@ import {connect, useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {updateUser} from "../redux/users/users-action-creators";
 import countryList from "react-select-country-list";
-
+import PhoneInput from "react-phone-number-input";
+import flags from "react-phone-number-input/flags";
+import 'react-phone-number-input/style.css'
 
 function ScreenTwoSignUpPage({storedUser}) {
 
@@ -48,16 +50,27 @@ function ScreenTwoSignUpPage({storedUser}) {
     const [error, setError] = useState({});
 
     const {
+        profession,
         nationality,
         hometown_or_community_name,
         district_assembly,
         state_or_region,
-        zipcode
+        zipcode,
+        mobile_number
     } = user;
 
-
+    const handlePhoneChange = (value) => {
+        setUser({...user, mobile_number: value});
+    }
     const handleSubmit = (event) => {
         event.preventDefault();
+
+        if (!profession) {
+            setError({...error, profession: "Profession required"});
+            return;
+        } else {
+            setError({...error, profession: ""});
+        }
 
         if (!hometown_or_community_name) {
             setError({...error, hometown_or_community_name: "First name required"});
@@ -73,19 +86,19 @@ function ScreenTwoSignUpPage({storedUser}) {
             setError({...error, district_assembly: ""});
         }
 
-        if (!state_or_region) {
-            setError({...error, state_or_region: "State or Region required"});
-            return;
-        } else {
-            setError({...error, state_or_region: ""});
-        }
+        // if (!state_or_region) {
+        //     setError({...error, state_or_region: "State or Region required"});
+        //     return;
+        // } else {
+        //     setError({...error, state_or_region: ""});
+        // }
 
-        if (!nationality) {
-            setError({...error, nationality: "Country required"});
-            return;
-        } else {
-            setError({...error, nationality: ""});
-        }
+        // if (!nationality) {
+        //     setError({...error, nationality: "Country required"});
+        //     return;
+        // } else {
+        //     setError({...error, nationality: ""});
+        // }
 
         if (!zipcode) {
             setError({...error, zipcode: "Zipcode required"});
@@ -134,6 +147,23 @@ function ScreenTwoSignUpPage({storedUser}) {
                         <Card elevation={1} raised={true} variant="elevation">
                             <CardContent>
 
+                                <Typography variant="subtitle2">Profession/Occupation</Typography>
+                                <TextField
+                                    size="small"
+                                    variant="outlined"
+                                    fullWidth={true}
+                                    required={true}
+                                    margin="dense"
+                                    value={profession}
+                                    placeholder="Enter profession or Occupation"
+                                    name="profession"
+                                    label="Profession/Occupation"
+                                    onChange={handleChange}
+                                    helperText={error.profession}
+                                    error={Boolean(error.profession)}
+                                />
+
+
                                 <Typography variant="subtitle2">Community Name</Typography>
                                 <TextField
                                     size="small"
@@ -166,42 +196,42 @@ function ScreenTwoSignUpPage({storedUser}) {
                                     error={Boolean(error.district_assembly)}
                                 />
 
-                                <Typography variant="subtitle2">State/Region/Province</Typography>
-                                <TextField
-                                    size="small"
-                                    variant="outlined"
-                                    fullWidth={true}
-                                    required={true}
-                                    margin="dense"
-                                    value={state_or_region}
-                                    placeholder="Enter your state or region"
-                                    name="state_or_region"
-                                    label="State"
-                                    onChange={handleChange}
-                                    helperText={error.state_or_region}
-                                    error={Boolean(error.state_or_region)}
-                                />
+                                {/*<Typography variant="subtitle2">State/Region/Province</Typography>*/}
+                                {/*<TextField*/}
+                                {/*    size="small"*/}
+                                {/*    variant="outlined"*/}
+                                {/*    fullWidth={true}*/}
+                                {/*    required={true}*/}
+                                {/*    margin="dense"*/}
+                                {/*    value={state_or_region}*/}
+                                {/*    placeholder="Enter your state or region"*/}
+                                {/*    name="state_or_region"*/}
+                                {/*    label="State"*/}
+                                {/*    onChange={handleChange}*/}
+                                {/*    helperText={error.state_or_region}*/}
+                                {/*    error={Boolean(error.state_or_region)}*/}
+                                {/*/>*/}
 
 
-                                <Typography variant="subtitle2">Country</Typography>
-                                <Select
-                                    name="nationality"
-                                    fullWidth={true}
-                                    variant="outlined"
-                                    margin="dense"
-                                    onChange={handleChange}>
-                                    {
-                                        (countries.map((country) => {
-                                            return (
-                                                <MenuItem
-                                                    key={country.label}
-                                                    value={country.value}>
-                                                    {country.label}
-                                                </MenuItem>
-                                            )
-                                        }))
-                                    }
-                                </Select>
+                                {/*<Typography variant="subtitle2">Country</Typography>*/}
+                                {/*<Select*/}
+                                {/*    name="nationality"*/}
+                                {/*    fullWidth={true}*/}
+                                {/*    variant="outlined"*/}
+                                {/*    margin="dense"*/}
+                                {/*    onChange={handleChange}>*/}
+                                {/*    {*/}
+                                {/*        (countries.map((country) => {*/}
+                                {/*            return (*/}
+                                {/*                <MenuItem*/}
+                                {/*                    key={country.label}*/}
+                                {/*                    value={country.value}>*/}
+                                {/*                    {country.label}*/}
+                                {/*                </MenuItem>*/}
+                                {/*            )*/}
+                                {/*        }))*/}
+                                {/*    }*/}
+                                {/*</Select>*/}
 
                                 <Typography variant="subtitle2">Digital Address / Zipcode</Typography>
                                 <TextField
@@ -216,6 +246,17 @@ function ScreenTwoSignUpPage({storedUser}) {
                                     onChange={handleChange}
                                     helperText={error.zipcode}
                                     error={Boolean(error.zipcode)}
+                                />
+
+                                <Typography variant="subtitle2">Mobile Number</Typography>
+                                <PhoneInput
+                                    defaultCountry="GH"
+                                    onChange={handlePhoneChange}
+                                    name="mobile_number"
+                                    flags={flags}
+                                    value={mobile_number}
+                                    displayInitialValueAsLocalNumber={true}
+                                    placeholder="Enter Phone Number"
                                 />
 
 

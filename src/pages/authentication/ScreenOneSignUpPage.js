@@ -5,6 +5,8 @@ import {makeStyles} from "@material-ui/styles";
 import {connect, useDispatch} from "react-redux";
 import {useHistory} from "react-router-dom";
 import {updateUser} from "../redux/users/users-action-creators";
+import DateFnsUtils from '@date-io/date-fns';
+import { MuiPickersUtilsProvider , DatePicker} from '@material-ui/pickers';
 
 function ScreenOneSignUpPage({storedUser}) {
 
@@ -48,13 +50,13 @@ function ScreenOneSignUpPage({storedUser}) {
     });
     const classes = useStyles();
 
-    const [user, setUser] = useState({...storedUser, "work_status": "EMPLOYED", "gender": "MALE"});
+    const [user, setUser] = useState({...storedUser, "gender": "MALE", date_of_birth: new Date()});
     const [error, setError] = useState({});
 
     const {
         first_name,
-        profession,
-        work_status,
+        nick_name,
+        date_of_birth,
         gender,
         last_name
     } = user;
@@ -76,18 +78,17 @@ function ScreenOneSignUpPage({storedUser}) {
             setError({...error, last_name: null});
         }
 
-        if (!profession) {
-            setError({...error, profession: "Profession required"});
-            return;
-        } else {
-            setError({...error, profession: ""});
-        }
-
         dispatch(updateUser(user, history, '/location'));
     }
 
     const handleChange = (event) => {
         setUser({...user, [event.target.name]: event.target.value});
+    }
+
+    const handleDateChange = date_of_birth => {
+
+        console.log(date_of_birth)
+        setUser({...user, date_of_birth: date_of_birth})
     }
 
     return (
@@ -148,6 +149,20 @@ function ScreenOneSignUpPage({storedUser}) {
                                     error={Boolean(error.last_name)}
                                 />
 
+                                <Typography variant="subtitle2">Nick Name</Typography>
+                                <TextField
+                                    onChange={handleChange}
+                                    size="small"
+                                    variant="outlined"
+                                    fullWidth={true}
+                                    required={true}
+                                    margin="dense"
+                                    value={nick_name}
+                                    placeholder="Enter nickname"
+                                    name="nick_name"
+                                    label="Nick Name"
+                                />
+
                                 <div className="margin-bottom-small">
                                     <Typography variant="subtitle2" gutterBottom={true}>Gender</Typography>
                                     <Select
@@ -163,39 +178,42 @@ function ScreenOneSignUpPage({storedUser}) {
                                 </div>
                                 {/*{Gender}*/}
 
-                                <Typography variant="subtitle2">Profession/Occupation</Typography>
-                                <TextField
-                                    size="small"
-                                    variant="outlined"
-                                    fullWidth={true}
-                                    required={true}
-                                    margin="dense"
-                                    value={profession}
-                                    placeholder="Enter profession or Occupation"
-                                    name="profession"
-                                    label="Profession/Occupation"
-                                    onChange={handleChange}
-                                    helperText={error.profession}
-                                    error={Boolean(error.profession)}
-                                />
 
                                 {/*{Working status}*/}
 
-                                <div className="margin-bottom-small">
-                                    <Typography gutterBottom={true} variant="subtitle2">Work Status</Typography>
-                                    <Select
-                                        margin="dense"
-                                        fullWidth={true}
-                                        variant="outlined"
-                                        name="work_status"
-                                        value={work_status}
-                                        onChange={handleChange}>
-                                        <MenuItem value="EMPLOYED">Gainfully Employed</MenuItem>
-                                        <MenuItem value="UNEMPLOYED">Unemployed</MenuItem>
-                                        <MenuItem value="SEARCHING">Searching for job</MenuItem>
-                                    </Select>
-                                </div>
+                                {/*<div className="margin-bottom-small">*/}
+                                {/*    <Typography gutterBottom={true} variant="subtitle2">Work Status</Typography>*/}
+                                {/*    <Select*/}
+                                {/*        margin="dense"*/}
+                                {/*        fullWidth={true}*/}
+                                {/*        variant="outlined"*/}
+                                {/*        name="work_status"*/}
+                                {/*        value={work_status}*/}
+                                {/*        onChange={handleChange}>*/}
+                                {/*        <MenuItem value="EMPLOYED">Gainfully Employed</MenuItem>*/}
+                                {/*        <MenuItem value="UNEMPLOYED">Unemployed</MenuItem>*/}
+                                {/*        <MenuItem value="SEARCHING">Searching for job</MenuItem>*/}
+                                {/*    </Select>*/}
+                                {/*</div>*/}
 
+
+                                <div>
+                                    <Typography variant="subtitle2" gutterBottom={true}>Date of birth</Typography>
+
+                                    <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                                        <DatePicker
+                                            format="dd/MMM/yyyy"
+                                            inputVariant="outlined"
+                                            placeholder="Date of Birth"
+                                            fullWidth={true}
+                                            margin="dense"
+                                            name="date_of_birth"
+                                            value={date_of_birth}
+                                            onChange={handleDateChange}
+                                            maxDate={new Date()}
+                                        />
+                                    </MuiPickersUtilsProvider>
+                                </div>
 
 
                                 <Button
