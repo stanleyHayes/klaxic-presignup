@@ -256,7 +256,7 @@ function ScreenTwoSignUpPage({storedUser}) {
                                     flags={flags}
                                     value={mobile_number}
                                     displayInitialValueAsLocalNumber={true}
-                                    placeholder="Enter Phone Number"
+                                    placeholder="Enter Mobile Number"
                                 />
 
 

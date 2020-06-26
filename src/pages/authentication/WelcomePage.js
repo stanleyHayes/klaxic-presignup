@@ -3,7 +3,8 @@ import {makeStyles} from "@material-ui/styles";
 import "../../App.css";
 import {useHistory} from "react-router-dom";
 
-import {Typography, Container, Grid, Button} from "@material-ui/core";
+import {Typography, Container, Grid, Button, Avatar} from "@material-ui/core";
+import {Person, Business} from "@material-ui/icons";
 
 function WelcomePage() {
 
@@ -55,6 +56,14 @@ function WelcomePage() {
         marginVerticalHuge: {
             marginBottom: 64,
             marginTop: 64
+        },
+        avatar: {
+            width: 80,
+            height: 80
+        },
+        avatarContainer: {
+            display: "flex",
+            justifyContent: "center"
         }
     });
     const classes = useStyles();
@@ -89,6 +98,11 @@ function WelcomePage() {
 
                 <Grid container={true} spacing={5}>
                     <Grid item={true} xs={12} md={6}>
+                        <div className={classes.avatarContainer}>
+                            <Avatar className={classes.avatar}>
+                                <Person fontSize="large" />
+                            </Avatar>
+                        </div>
                         <Typography align="center" variant="h4" className={`${classes.mainText} ${classes.marginVerticalMedium}`}>Lorem Ipsum</Typography>
                         <Typography align="center" variant="h6" className={`${classes.secondaryText} ${classes.marginVerticalSmall}`}>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -104,6 +118,11 @@ function WelcomePage() {
 
                     </Grid>
                     <Grid item={true} xs={12} md={6}>
+                        <div className={classes.avatarContainer}>
+                            <Avatar className={classes.avatar}>
+                                <Business fontSize="large" />
+                            </Avatar>
+                        </div>
                         <Typography align="center" variant="h4" className={`${classes.mainText} ${classes.marginVerticalMedium}`}>Lorem Ipsum</Typography>
                         <Typography align="center" variant="h6" className={`${classes.secondaryText} ${classes.marginVerticalSmall}`}>
                             Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor

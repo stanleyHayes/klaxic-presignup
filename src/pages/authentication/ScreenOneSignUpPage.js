@@ -163,19 +163,6 @@ function ScreenOneSignUpPage({storedUser}) {
                                     label="Nick Name"
                                 />
 
-                                <div className="margin-bottom-small">
-                                    <Typography variant="subtitle2" gutterBottom={true}>Gender</Typography>
-                                    <Select
-                                        margin="dense"
-                                        fullWidth={true}
-                                        variant="outlined"
-                                        name="gender"
-                                        value={gender}
-                                        onChange={handleChange}>
-                                        <MenuItem value="MALE">Male</MenuItem>
-                                        <MenuItem value="FEMALE">Female</MenuItem>
-                                    </Select>
-                                </div>
                                 {/*{Gender}*/}
 
 
@@ -215,6 +202,21 @@ function ScreenOneSignUpPage({storedUser}) {
                                     </MuiPickersUtilsProvider>
                                 </div>
 
+                                <div className="margin-bottom-small">
+                                    <Typography variant="subtitle2" gutterBottom={true}>Gender Type</Typography>
+                                    <Select
+                                        margin="dense"
+                                        fullWidth={true}
+                                        variant="outlined"
+                                        name="gender"
+                                        value={gender}
+                                        onChange={handleChange}>
+                                        <MenuItem value="MALE">Male</MenuItem>
+                                        <MenuItem value="FEMALE">Female</MenuItem>
+                                        <MenuItem value="TRANSGENDER_MALE">Transgender Male</MenuItem>
+                                        <MenuItem value="TRANSGENDER_FEMALE">Transgender Female</MenuItem>
+                                    </Select>
+                                </div>
 
                                 <Button
                                     onClick={handleSubmit}
