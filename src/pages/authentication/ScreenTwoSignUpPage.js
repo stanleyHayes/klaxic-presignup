@@ -108,12 +108,12 @@ function ScreenTwoSignUpPage({storedUser}) {
         }
 
 
-        dispatch(updateUser(user, history, '/account'));
+        dispatch(updateUser(user, history, '/individual/account'));
     }
 
     const handlePrevious = event => {
         event.preventDefault();
-        history.push('/');
+        history.push('/individual/personal');
     }
 
     const handleChange = (event) => {

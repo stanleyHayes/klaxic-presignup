@@ -78,7 +78,7 @@ function ScreenOneSignUpPage({storedUser}) {
             setError({...error, last_name: null});
         }
 
-        dispatch(updateUser(user, history, '/location'));
+        dispatch(updateUser(user, history, '/individual/location'));
     }
 
     const handleChange = (event) => {

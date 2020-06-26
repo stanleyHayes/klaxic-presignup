@@ -59,7 +59,7 @@ function ScreenThreeSignUpPage({loading, storedUser}) {
 
     const handlePrevious = event => {
         event.preventDefault();
-        history.push('/location');
+        history.push('/individual/location');
     }
 
     const handleSubmit = (event) => {

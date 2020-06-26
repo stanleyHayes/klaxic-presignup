@@ -8,20 +8,25 @@ import ScreenThreeSignUpPage from "./pages/authentication/ScreenThreeSignUpPage"
 import InterviewPage from "./pages/interview/InterviewPage";
 import InterviewQuestionsPage from "./pages/interview/InterviewQuestionsPage";
 import InterviewAcknowledgmentPage from "./pages/interview/InterviewAcknowledgmentPage";
+import WelcomePage from "./pages/authentication/WelcomePage";
 
 function App() {
     return (
         <BrowserRouter>
             <Switch>
-                <Route exact={true} path="/">
+                <Route exact={true} path="/individual/personal">
                     <ScreenOneSignUpPage/>
                 </Route>
 
-                <Route exact={true} path="/location">
+                <Route path="/">
+                    <WelcomePage />
+                </Route>
+
+                <Route exact={true} path="/individual/location">
                     <ScreenTwoSignUpPage/>
                 </Route>
 
-                <Route exact={true} path="/account">
+                <Route exact={true} path="/individual/account">
                     <ScreenThreeSignUpPage/>
                 </Route>
 
