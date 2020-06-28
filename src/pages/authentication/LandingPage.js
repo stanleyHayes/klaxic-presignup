@@ -71,6 +71,7 @@ function LandingPage() {
                 return <LanguageSetup/>
         }
     }
+
     return (
         <div className="container">
             <Container>
@@ -98,7 +99,7 @@ function LandingPage() {
                     <Grid item={true} xs={5}>
                         <Button
                             disabled={page === 1}
-                            variant="contained"
+                            variant="outlined"
                             fullWidth={true}
                             onClick={handleNextClick}
                             size="large"

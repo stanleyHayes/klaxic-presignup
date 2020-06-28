@@ -20,7 +20,8 @@ function LanguageSetup() {
         },
         root: {},
         mainText: {
-            color: "white"
+            color: "white",
+            fontWeight: 300
         },
         secondaryText: {
             color: "#cccccc"
@@ -66,7 +67,7 @@ function LanguageSetup() {
                 </div>
                 <Typography
                     className={`${classes.marginBottomMedium} ${classes.secondaryText}`}
-                    variant="h6"
+                    variant="subtitle1"
                     align="center">
                     Select your preferred Language
                 </Typography>

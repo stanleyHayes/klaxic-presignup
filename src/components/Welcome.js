@@ -21,7 +21,8 @@ function Welcome() {
         root: {},
         mainText: {
             color: "white",
-            textTransform: "uppercase"
+            textTransform: "uppercase",
+            fontWeight: 300
         },
         secondaryText: {
             color: "#cccccc"
@@ -34,8 +35,8 @@ function Welcome() {
             marginTop: 16
         },
         avatar: {
-            width: 250,
-            height: 250
+            width: 200,
+            height: 200
         },
         avatarContainer: {
             display: "flex",
@@ -62,7 +63,7 @@ function Welcome() {
     return (
         <div>
             <Container>
-                <Grid className={`${classes.marginBottomLarge}`} container={true} spacing={5} justify="center">
+                <Grid className={`${classes.marginBottomLarge}`} container={true} spacing={2} justify="center">
                     <Grid item={true} xs={12} md={6}>
                         <div className={classes.avatarContainer}>
                             <Avatar
@@ -80,16 +81,17 @@ function Welcome() {
                         </div>
                     </Grid>
                 </Grid>
+
                 <Typography
                     className={`${classes.marginBottomLarge} ${classes.mainText}`}
-                    align="center" variant="h2">
+                    align="center" variant="h3">
                     Welcome to Klaxic Social Community
                 </Typography>
 
                 <Typography
                     className={`${classes.marginBottomMedium} ${classes.secondaryText}`}
                     align="center"
-                    variant="h6">
+                    variant="subtitle1">
                     Connect with the Klaxicans in your community to discover yourself and your indelible skills to help
                     in the development of your district community and your corporate world whiles involve yourself in
                     our Community Development Surveys, Projects and Developments and be Rewarded Economically
@@ -98,7 +100,7 @@ function Welcome() {
                 <Typography
                     className={`${classes.marginBottomMedium} ${classes.secondaryText}`}
                     align="center"
-                    variant="h6">
+                    variant="subtitle1">
                     Logon to your dashboard and continue developing and increasing your community network for your
                     klaxic
                     Surveys to develop your district or sign up to start discovering yourself and the ineffaceable
@@ -120,7 +122,7 @@ function Welcome() {
 
                     <Grid item={true} xs={12} md={4}>
                         <Button
-                            variant="contained"
+                            variant="outlined"
                             fullWidth={true}
                             size="large"
                             className={`${classes.button}`}>
@@ -132,7 +134,7 @@ function Welcome() {
 
                     <Grid item={true} xs={12} md={4}>
                         <Button
-                            variant="contained"
+                            variant="outlined"
                             fullWidth={true}
                             size="large"
                             className={`${classes.button}`}>
