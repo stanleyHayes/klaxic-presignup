@@ -32,6 +32,30 @@ body{
   margin-bottom: 8px;
 }
 
+.padding-vertical-small{
+  padding-top: 8px;
+  padding-bottom: 8px;
+}
+
+.padding-vertical-medium{
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.padding-vertical-large{
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+
+.padding-vertical-large{
+  padding-top: 32px;
+  padding-bottom: 32px;
+}
+.padding-vertical-huge{
+  padding-top: 64px;
+  padding-bottom: 64px;
+}
+
 
 .margin-top-small{
   margin-bottom: 8px;

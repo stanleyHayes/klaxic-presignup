@@ -8,6 +8,7 @@ import ScreenThreeSignUpPage from "./pages/authentication/ScreenThreeSignUpPage"
 import InterviewPage from "./pages/interview/InterviewPage";
 import InterviewQuestionsPage from "./pages/interview/InterviewQuestionsPage";
 import InterviewAcknowledgmentPage from "./pages/interview/InterviewAcknowledgmentPage";
+import LandingPage from "./pages/authentication/LandingPage";
 import WelcomePage from "./pages/authentication/WelcomePage";
 
 function App() {
@@ -18,7 +19,11 @@ function App() {
                     <ScreenOneSignUpPage/>
                 </Route>
 
-                <Route path="/">
+                <Route exact={true} path="/">
+                    <LandingPage />
+                </Route>
+
+                <Route exact={true} path="/register/membership">
                     <WelcomePage />
                 </Route>
 
