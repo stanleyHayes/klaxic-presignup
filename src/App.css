@@ -56,10 +56,14 @@ body{
   padding-bottom: 64px;
 }
 
-
 .margin-top-small{
-  margin-bottom: 8px;
+  margin-top: 8px;
 }
+
+.margin-top-medium{
+  margin-top: 16px;
+}
+
 
 .grey-text{
   color: #888888;
@@ -99,4 +103,16 @@ body{
 
 .font-weight-normal{
   font-weight: 400;
+}
+
+.responsive-img{
+  width: 100%;
+  object-fit: cover;
+  height: 75vh;
+}
+
+@media screen and (max-width: 900px) {
+  .responsive-img {
+    height: 50vh;
+  }
 }

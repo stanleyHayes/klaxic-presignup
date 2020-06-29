@@ -31,7 +31,6 @@ function Welcome() {
             paddingTop: 16,
             paddingBottom: 16,
             color: "white",
-            backgroundColor: "green",
             marginTop: 16
         },
         avatar: {

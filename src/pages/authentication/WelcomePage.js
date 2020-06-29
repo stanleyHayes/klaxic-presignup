@@ -76,7 +76,7 @@ function WelcomePage() {
     }
     const handleIndividualSignUp = event => {
         event.preventDefault();
-        history.push('/individual/personal');
+        history.push('/register/account-type');
     }
 
     return (
@@ -114,7 +114,7 @@ function WelcomePage() {
                             onClick={handleIndividualSignUp}
                             fullWidth={true}
                             className={`${classes.button} ${classes.marginVerticalSmall}`}                            size="large"
-                            variant="contained">Sign Up as an Individual</Button>
+                            variant="outlined">Sign Up as an Individual</Button>
 
                     </Grid>
                     <Grid item={true} xs={12} md={6}>
@@ -135,7 +135,7 @@ function WelcomePage() {
                             fullWidth={true}
                             className={`${classes.button} ${classes.marginVerticalSmall}`}
                             size="large"
-                            variant="contained">Sign Up as a Business</Button>
+                            variant="outlined">Sign Up as a Business</Button>
                     </Grid>
                 </Grid>
             </Container>

@@ -30,10 +30,11 @@ function ScreenOneSignUpPage({storedUser}) {
         },
         root: {},
         mainText: {
-            color: "white"
+            color: "white",
+            fontWeight: 300
         },
         secondaryText: {
-            color: "#888888"
+            color: "#cccccc"
         },
         button: {
             paddingTop: 16,
@@ -98,15 +99,15 @@ function ScreenOneSignUpPage({storedUser}) {
                     <Grid item={true} xs={12} md={4} className={classes.gridItem}>
                         <div className="description-container">
 
-                            <Typography variant="h2" className={classes.mainText}>Lorem Ipsum</Typography>
+                            <Typography gutterBottom={true} variant="h2" className={classes.mainText}>Lorem Ipsum</Typography>
 
-                            <Typography variant="h6" className={classes.secondaryText}>
+                            <Typography gutterBottom={true} variant="subtitle1" className={classes.secondaryText}>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt ut
                                 labore et dolore magna aliqua
                             </Typography>
 
-                            <Typography variant="h6" className={classes.secondaryText}>
+                            <Typography gutterBottom={true} variant="subtitle1" className={classes.secondaryText}>
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
                                 incididunt ut
                                 labore et dolore magna aliqua

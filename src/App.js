@@ -10,6 +10,7 @@ import InterviewQuestionsPage from "./pages/interview/InterviewQuestionsPage";
 import InterviewAcknowledgmentPage from "./pages/interview/InterviewAcknowledgmentPage";
 import LandingPage from "./pages/authentication/LandingPage";
 import WelcomePage from "./pages/authentication/WelcomePage";
+import MembershipSelectPage from "./pages/authentication/MembershipSelectPage";
 
 function App() {
     return (
@@ -24,6 +25,10 @@ function App() {
                 </Route>
 
                 <Route exact={true} path="/register/membership">
+                    <MembershipSelectPage />
+                </Route>
+
+                <Route exact={true} path="/register/account-type">
                     <WelcomePage />
                 </Route>
 
